@@ -63,9 +63,7 @@ class _TopNewsUiState extends State<TopNewsUi> {
   Widget _buildNewsCardView({NewsModel topNews}) {
     return Card(
       child: ListTile(
-        title: Text(topNews.title),
-        subtitle: Text(topNews.author),
-        trailing: Text(topNews.score.toString()),
+        title: Text(topNews.title, style: TextStyle(color: Colors.black, fontSize: 18),),
         onTap: (){
           Navigator.pushNamed(context, '/${topNews.id}');
         },

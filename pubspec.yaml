@@ -33,6 +33,7 @@ dependencies:
   provider: any
   url_launcher: any
   webview_flutter: any
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:
