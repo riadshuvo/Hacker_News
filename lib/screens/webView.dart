@@ -7,7 +7,7 @@ class NewsWebView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text("WebView"),),
       body: Container(
         child: WebView(
           initialUrl: url,
