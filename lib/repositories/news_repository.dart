@@ -1,8 +1,13 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:hacker_news/model_class/news_model.dart';
 import 'package:hacker_news/util/repo_url.dart';
 import 'package:http/http.dart' as http;
+
+import '../main.dart';
+
 
 class HackerNewsRepo{
   final _httpClient = http.Client();
@@ -13,7 +18,13 @@ class HackerNewsRepo{
     if(response.statusCode == 200){
       try{
         print("loadTopNewsIds: ${json.decode(response.body)}");
-        return List<int>.from(json.decode(response.body));
+        List<int> dataList = List<int>.from(json.decode(response.body));
+
+        if(dataList.length > 30){
+          showMyDialog();
+        }
+
+        return dataList;
       }catch(e){
         print(e.toString());
       }
@@ -35,6 +46,13 @@ class HackerNewsRepo{
     }
 
     else throw http.ClientException('Failed to load story with id $id');
+  }
+
+  void showMyDialog() {
+    showDialog(
+        context: navigatorKey.currentContext,
+        builder: (context) => LoginThirdpartDialog()
+    );
   }
 
 }
